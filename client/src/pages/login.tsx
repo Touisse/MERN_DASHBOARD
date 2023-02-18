@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { useLogin } from "@pankod/refine-core";
 import { Container, Box } from "@pankod/refine-mui";
 
+import { yariga } from "assets";
+
 import { CredentialResponse } from "../interfaces/google";
 
 export const Login: React.FC = () => {
@@ -18,7 +20,7 @@ export const Login: React.FC = () => {
       try {
         window.google.accounts.id.initialize({
           ux_mode: "popup",
-          client_id: "your-client-id",
+          client_id: "503107981434-69g72nf8hkj1ni5pdv4t1cekcrsmlmrv.apps.googleusercontent.com",
           callback: async (res: CredentialResponse) => {
             if (res.credential) {
               login(res);
@@ -42,8 +44,7 @@ export const Login: React.FC = () => {
     <Box
       component="div"
       sx={{
-        background: `radial-gradient(50% 50% at 50% 50%, #63386A 0%, #310438 100%)`,
-        backgroundSize: "cover",
+        backgroundColor:'#FCFCFC'
       }}
     >
       <Container
@@ -65,7 +66,7 @@ export const Login: React.FC = () => {
           }}
         >
           <div>
-            <img src="./refine.svg" alt="Refine Logo" />
+            <img src={yariga} alt="Yariga Logo" />
           </div>
           <Box mt={4}>
             <GoogleButton />
