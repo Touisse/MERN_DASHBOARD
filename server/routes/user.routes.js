@@ -3,12 +3,13 @@ import express from "express";
 import {
   createUser,
   getAllUsers,
-  getUserInfoID,
-} from "../controllers/user.controller";
+  getUserInfoByID,
+} from "../controllers/user.controller.js";
 
 const router = express.Router();
-router.router("").get(getAllUsers);
-router.router("").post(createUser);
-router.router("/:id").get(getUserInfoID);
+
+router.route("/").get(getAllUsers);
+router.route("/").post(createUser);
+router.route("/:id").get(getUserInfoByID);
 
 export default router;
