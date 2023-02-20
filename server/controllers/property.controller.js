@@ -48,7 +48,15 @@ const getAllProperties = async (req, res) => {
   }
 };
 
-const getPropertyDetail = async (req, res) => {};
+const getPropertyDetail = async (req, res) => {
+  const { id } = req.params;
+  const propertyExists = await Property.findOne({ _id: id }).populate(
+    "creator"
+  );
+
+  if (propertyExists) res.status(200).json(propertyExists);
+  else res.status(404).json({ message: error.message });
+};
 
 const createProperty = async (req, res) => {
   try {
@@ -82,7 +90,27 @@ const createProperty = async (req, res) => {
 
 const updateProperty = async (req, res) => {};
 
-const deleteProperty = async (req, res) => {};
+const deleteProperty = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const propertyToDelete = await Property.findOne({ _id: id }).populate(
+      "creator"
+    );
+
+    if (!propertyToDelete) throw new Error("Property not Found");
+    const session = await mongoose.startSession();
+
+    session.startTransaction();
+    propertyToDelete.remove({ session });
+    propertyToDelete.creator.allProperties.pull(propertyToDelete);
+
+    await propertyToDelete.creator.save({ session });
+    await session.commitTransaction();
+    res.status(200).json({ message: "Property Deleted Successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 export {
   getAllProperties,
