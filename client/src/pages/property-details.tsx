@@ -39,6 +39,8 @@ const PropertyDetails = () => {
   });
   const isCurrentUser = currentUser != null;
 
+  // console.log(propertyDetails.creator[0].allProperties)
+
   const handleDeleteProperty = () => {
     const response = confirm('Are you sure you want to delete this property?');
     if (response) {
@@ -138,7 +140,7 @@ const PropertyDetails = () => {
                 <Typography fontSize={14} fontWeight={400} color="#808191">North Carolina, USA</Typography>
               </Stack>
 
-              <Typography mt={1} fontSize={16} fontWeight={600} color="#11142D">{propertyDetails.creator.allProperties?.length} Properties</Typography>
+              <Typography mt={1} fontSize={16} fontWeight={600} color="#11142D">{currentUser?.allProperties.length} Properties</Typography>
             </Stack>
 
             <Stack width="100%" mt="25px" direction="row" flexWrap="wrap" gap={2}>
