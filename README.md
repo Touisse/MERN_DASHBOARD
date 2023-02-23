@@ -1,4 +1,4 @@
-This is a Full_Stack_MERN Application for more Details : <br>
+# This is a Full_Stack_MERN Application for more Details : <br>
 
 With modern material design, a fully functional dashboard, a property management page, and a users page - both connected to our database and a profile page that connects the two, this video is the updated full-stack MERN course you’ve all been waiting for.
 
@@ -18,7 +18,7 @@ Alongside building this application, you'll learn how to use the most in-demand 
 ```bash
 npm create refine-app@latest -- --example mern-dashboard-client
 ```
-## Interfaces ==>
+# Interfaces 
 1. Login Page :
 <br>
 <img width="800" height="800" alt="Screen Shot 2023-02-21 at 4 30 54 PM" src="https://user-images.githubusercontent.com/63207127/220389704-6997efcf-76c4-4da2-b0f1-ef2413300ddc.png">
